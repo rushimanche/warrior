@@ -9,8 +9,8 @@ Setup Instructions:
 2) cd /server
 3) npm install
 4) nodemon
-  - Ensure nodemon is installed as well (sudo(if necessary) npm install -g nodemon)
-  - To run server, nodemon server.js
+   - Ensure nodemon is installed as well (sudo(if necessary) npm install -g nodemon)
+   - To run server, nodemon server.js
 5) cd ../client
 6) npm install
 7) npm run dev
