@@ -54,37 +54,17 @@ function register(req, res, next) {
 function submitFormSchema(req, res, next) {
     const schema = Joi.object({
         username: Joi.string().required(),
-        ca_activity_1: Joi.string().allow(''),
-        ca_activity_1_desc: Joi.string().allow(''),
-        ca_activity_2: Joi.string().allow(''),
-        ca_activity_2_desc: Joi.string().allow(''),
-        ca_activity_3: Joi.string().allow(''),
-        ca_activity_3_desc: Joi.string().allow(''),
-        ca_activity_4: Joi.string().allow(''),
-        ca_activity_4_desc: Joi.string().allow(''),
-        ca_activity_5: Joi.string().allow(''),
-        ca_activity_5_desc: Joi.string().allow(''),
-        ca_activity_6: Joi.string().allow(''),
-        ca_activity_6_desc: Joi.string().allow(''),
-        ca_activity_7: Joi.string().allow(''),
-        ca_activity_7_desc: Joi.string().allow(''),
-        ca_activity_8: Joi.string().allow(''),
-        ca_activity_8_desc: Joi.string().allow(''),
-        ca_activity_9: Joi.string().allow(''),
-        ca_activity_9_desc: Joi.string().allow(''),
-        ca_activity_10: Joi.string().allow(''),
-        ca_activity_10_desc: Joi.string().allow(''),
-        ca_award_1: Joi.string().allow(''),
-        ca_award_1_desc: Joi.string().allow(''),
-        ca_award_2: Joi.string().allow(''),
-        ca_award_2_desc: Joi.string().allow(''),
-        ca_award_3: Joi.string().allow(''),
-        ca_award_3_desc: Joi.string().allow(''),
-        ca_award_4: Joi.string().allow(''),
-        ca_award_4_desc: Joi.string().allow(''),
-        ca_award_5: Joi.string().allow(''),
-        ca_award_5_desc: Joi.string().allow(''),
+        ca_activity: Joi.array().items(activity_schema),
+        ca_award: Joi.array().items(award_scehma)
     });
+    const activity_schema = Joi.object({
+        activity_name: Joi.string().allow(''),
+        activity_desc: Joi.string().allow('')
+    })
+    const award_scehma = Joi.object({
+        award_name: Joi.string().allow(''),
+        award_desc: Joi.string.allow('')
+    })
     validateRequest(req, next, schema);
 }
 

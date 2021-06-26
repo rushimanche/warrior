@@ -112,68 +112,11 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
         var temp_activity_counter = 0;
         var temp_award_counter = 0;
         var user_data = await getUser(username);
-        var activity_1 = user_data['ca_activity_1'];
-        var activity_2 = user_data['ca_activity_2'];
-        var activity_3 = user_data['ca_activity_3'];
-        var activity_4 = user_data['ca_activity_4'];
-        var activity_5 = user_data['ca_activity_5'];
-        var activity_6 = user_data['ca_activity_6'];
-        var activity_7 = user_data['ca_activity_7'];
-        var activity_8 = user_data['ca_activity_8'];
-        var activity_9 = user_data['ca_activity_9'];
-        var activity_10 = user_data['ca_activity_10'];
-        var award_1 = user_data['ca_award_1'];
-        var award_2 = user_data['ca_award_2'];
-        var award_3 = user_data['ca_award_3'];
-        var award_4 = user_data['ca_award_4'];
-        var award_5 = user_data['ca_award_5'];
-
-        if(activity_1) {
-            temp_activity_counter++; 
-        }
-        if(activity_2) {
-            temp_activity_counter++; 
-        }
-        if(activity_3) {
-            temp_activity_counter++; 
-        }
-        if(activity_4) {
-            temp_activity_counter++; 
-        }
-        if(activity_5) {
-            temp_activity_counter++; 
-        }
-        if(activity_6) {
-            temp_activity_counter++; 
-        }
-        if(activity_7) {
-            temp_activity_counter++; 
-        }
-        if(activity_8) {
-            temp_activity_counter++; 
-        }
-        if(activity_9) {
-            temp_activity_counter++; 
-        }
-        if(activity_10) {
-            temp_activity_counter++; 
-        }
-        if(award_1) {
-            temp_award_counter++; 
-        }
-        if(award_2) {
-            temp_award_counter++; 
-        }
-        if(award_3) {
-            temp_award_counter++; 
-        }
-        if(award_4) {
-            temp_award_counter++; 
-        }
-        if(award_5) {
-            temp_award_counter++; 
-        }
-
+        temp_activity_counter = JSON.parse(user_data['ca_activity']).length
+        temp_award_counter = JSON.parse(user_data['ca_award']).length
+        console.log("this the activity..." + temp_activity_counter)
+        console.log("this the activity..." + temp_award_counter)
+        
         return([temp_activity_counter, temp_award_counter, user_data]);
     }   
 
@@ -200,6 +143,7 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
                         {Array.from({ length: activityCounter }, (_unused, index) => index + 1).map(
                             (activityIndex) => {
                                 const activityId = `ca_activity_${activityIndex}`
+                                console.log("this the index..." + activityId)
                                 return (
                                     <div>
                                         <div key={activityId} className="user-box">

@@ -102,6 +102,7 @@ async function getUser(field) {
 
 async function getUserWithUsername(username) {
     const user = await db.User.findOne({ where: { username } });
+    console.log("this the user..." + user)
     if (!user) throw 'User not found';
     return user;
 }
