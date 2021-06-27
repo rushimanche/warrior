@@ -114,8 +114,6 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
         var user_data = await getUser(username);
         temp_activity_counter = JSON.parse(user_data['ca_activity']).length
         temp_award_counter = JSON.parse(user_data['ca_award']).length
-        console.log("this the activity..." + temp_activity_counter)
-        console.log("this the award..." + temp_award_counter)
         
         return([temp_activity_counter, temp_award_counter, user_data]);
     }   
@@ -144,7 +142,6 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
                         {Array.from({ length: activityCounter }, (_unused, index) => index + 1).map(
                             (activityIndex) => {
                                 const activityId = `ca_activity_${activityIndex}`
-                                console.log("this the activity index..." + activityId)
                                 return (
                                     <div key={activityId}>
                                         <div  className="user-box">
@@ -235,7 +232,6 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
                         </div>
                         {Array.from({ length: awardCounter }, (_unused, index) => index + 1).map(
                             (awardIndex) => {
-                                console.log("this the  awardindex..." + awardIndex)
                                 const awardId = `ca_award_${awardIndex}`
                                 return (
                                     <div key={awardId} className="user-box">
