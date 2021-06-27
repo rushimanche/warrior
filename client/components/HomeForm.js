@@ -115,7 +115,7 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
         temp_activity_counter = JSON.parse(user_data['ca_activity']).length
         temp_award_counter = JSON.parse(user_data['ca_award']).length
         console.log("this the activity..." + temp_activity_counter)
-        console.log("this the activity..." + temp_award_counter)
+        console.log("this the award..." + temp_award_counter)
         
         return([temp_activity_counter, temp_award_counter, user_data]);
     }   
@@ -126,11 +126,13 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
             setActivityCounter(response[0])
             setAwardCounter(response[1])
             setUserData(response[2])
+            setLoading(false)
         });
         }, 
         []
     )
 
+    
     return(
         <React.Fragment>
             <div className="app-container">
@@ -143,10 +145,10 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
                         {Array.from({ length: activityCounter }, (_unused, index) => index + 1).map(
                             (activityIndex) => {
                                 const activityId = `ca_activity_${activityIndex}`
-                                console.log("this the index..." + activityId)
+                                console.log("this the activity index..." + activityId)
                                 return (
-                                    <div>
-                                        <div key={activityId} className="user-box">
+                                    <div key={activityId}>
+                                        <div  className="user-box">
                                         <span className="expand-more">
                                                 <a onClick={() => showFunctions[activityId](!showVariables[activityId])} href="javascript:void(0)">
                                                     <span className="material-icons">
@@ -234,6 +236,7 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
                         </div>
                         {Array.from({ length: awardCounter }, (_unused, index) => index + 1).map(
                             (awardIndex) => {
+                                console.log("this the  awardindex..." + awardIndex)
                                 const awardId = `ca_award_${awardIndex}`
                                 return (
                                     <div key={awardId} className="user-box">

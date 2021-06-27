@@ -78,7 +78,6 @@ class Home extends Component {
                     <HomeForm 
                     user={this.state.user}
                     username = {this.props.router.query.username}
-                    onChangeForm={this.onChangeForm}
                     getUser={this.getUser}
                     submitForm={this.submitForm}
                     handleEditorChange={this.handleEditorChange}
