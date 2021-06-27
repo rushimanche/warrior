@@ -126,7 +126,6 @@ const HomeForm = ({onChangeForm, submitForm, handleEditorChange, username}) => {
             setActivityCounter(response[0])
             setAwardCounter(response[1])
             setUserData(response[2])
-            setLoading(false)
         });
         }, 
         []
